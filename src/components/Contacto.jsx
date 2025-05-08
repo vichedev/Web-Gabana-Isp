@@ -11,21 +11,21 @@ export const Contacto = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    setLoading(true); // Activar el spinner
-    setSuccessMessage(''); // Limpiar cualquier mensaje de éxito previo
-    setErrorMessage(''); // Limpiar cualquier mensaje de error previo
+    setLoading(true);
+    setSuccessMessage('');
+    setErrorMessage('');
 
     emailjs
-      .sendForm('service_k7p7i7o', 'template_imqyz6g', form.current, {
-        publicKey: 'NFO8uVuAUzlEFO_2H',
+      .sendForm('service_97dbsfc', 'template_jhb74rf', form.current, {
+        publicKey: 'fm5Z86rRBfVdoKf1y',
       })
       .then(
         () => {
-          setLoading(false); // Detener el spinner
+          setLoading(false);
           setSuccessMessage('¡Tu mensaje ha sido enviado correctamente!');
         },
         (error) => {
-          setLoading(false); // Detener el spinner
+          setLoading(false);
           setErrorMessage('Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.');
         }
       );
@@ -33,21 +33,19 @@ export const Contacto = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-gray-800 flex flex-col items-center py-20">
-      <h1 className="text-6xl font-bold text-white mb-8">Contactos</h1>
 
-      {/* Imagen a lo largo */}
       <img
         src="/img/banner.jpg"
         alt="Imagen de Contacto"
-        className="w-full h-48 object-cover mb-12"
+        className="w-full h-78 object-cover mb-12 hidden sm:block" 
       />
 
-      {/* Información de contacto y redes sociales */}
+
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {/* WhatsApp */}
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <a href="https://wa.me/593994416519" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/593989821801" target="_blank" rel="noopener noreferrer">
               <img
                 src="/img/icons/whatsapp.png"
                 alt="WhatsApp"
@@ -60,7 +58,7 @@ export const Contacto = () => {
 
           {/* Instagram */}
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <a href="https://www.instagram.com/tuempresa" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
               <img
                 src="/img/icons/instagram.png"
                 alt="Instagram"
@@ -73,7 +71,7 @@ export const Contacto = () => {
 
           {/* Facebook */}
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <a href="https://www.facebook.com/tuempresa" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <img
                 src="/img/icons/facebook.png"
                 alt="Facebook"

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-scroll"; // Importamos Link de react-scroll para el scroll suave
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -24,6 +25,7 @@ const Hero = () => {
         bg-gradient-to-t from-blue-500 via-blue-200 to-white
         md:bg-[url('/img/fondo.png')] md:bg-cover md:bg-center md:bg-no-repeat
       "
+      id="inicio" // Añadimos un ID para navegación
     >
       <div className="w-[90vw] max-w-[1800px] mx-auto px-[5vw] grid md:grid-cols-2 gap-[5vw] items-center relative z-10">
         {/* Texto Izquierdo */}
@@ -37,134 +39,84 @@ const Hero = () => {
             className="font-bold text-gray-900 mb-[3vh] leading-tight"
             style={{ fontSize: textSize }}
           >
-            La conexión que impulsa tus sueños
+            Internet de Fibra Óptica <span className="text-blue-600">Ultra Rápido</span>
           </h1>
           <p
             className="text-gray-600 mb-[5vh]"
             style={{ fontSize: subtextSize }}
           >
-            Vive la velocidad, siente la estabilidad, conecta sin límites.
+            Conectamos tu mundo con velocidades de hasta <strong>1 Gbps</strong>, 
+            latencia mínima para gaming y estabilidad garantizada para tu trabajo remoto.
           </p>
-          <motion.button
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-md"
-            style={{
-              padding: "clamp(0.75rem, 1.5vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem)",
-              fontSize: subtextSize,
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          
+          {/* Botón que redirige a la sección de Planes */}
+          <Link
+            to="planes" // Esto debe coincidir con el ID de tu sección Planes
+            smooth={true}
+            duration={500}
+            offset={-80} // Ajuste para el header si es necesario
           >
-            Explora Planes
-          </motion.button>
+            <motion.button
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-md"
+              style={{
+                padding: "clamp(0.75rem, 1.5vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem)",
+                fontSize: subtextSize,
+                cursor: "pointer",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Ver Planes y Precios
+            </motion.button>
+          </Link>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="relative w-full grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-4 max-w-5xl mx-auto">
-          {/* Solo mostrar la tarjeta del logo de Gabana en mobile */}
+        {/* Contenedor del lado derecho */}
+        <div className="relative w-full">
+          {/* Versión mobile - mantiene el bento grid */}
+          <div className="md:hidden relative w-full grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-4 max-w-5xl mx-auto">
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              custom={5}
+              className="col-span-1 md:col-start-2 md:row-start-2 bg-gradient-to-br from-white to-blue-200 rounded-2xl shadow-xl flex items-center justify-center p-4"
+            >
+              <img
+                src="/img/LOGO_GABANA_NET.png"
+                alt="GABANA NET"
+                className="w-full max-w-[150px] object-contain"
+              />
+            </motion.div>
+
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              custom={9}
+              className="col-span-1 md:col-start-2 md:row-start-3 bg-white rounded-xl shadow-md p-4 flex flex-col justify-center items-center border border-gray-200"
+            >
+              <h3 className="font-bold text-gray-900 text-lg text-center">
+                Tecnología de Vanguardia
+              </h3>
+              <p className="text-gray-500 text-sm mt-1 text-center">
+                Fibra óptica directa a tu hogar o empresa
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Versión desktop - solo el logo grande */}
           <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={5}
-            className="col-span-1 md:col-start-2 md:row-start-2 bg-gradient-to-br from-white to-blue-200 rounded-2xl shadow-xl flex items-center justify-center p-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="hidden md:flex items-center justify-center"
           >
             <img
               src="/img/LOGO_GABANA_NET.png"
               alt="GABANA NET"
-              className="w-full max-w-[150px] object-contain"
+              className="w-full max-w-[400px] object-contain"
             />
-          </motion.div>
-
-          {/* Nueva tarjeta debajo del logo, solo visible en mobile */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={9}
-            className="col-span-1 md:col-start-2 md:row-start-3 bg-white rounded-xl shadow-md p-4 flex flex-col justify-center items-center border border-gray-200 block md:hidden"
-          >
-            <h3 className="font-bold text-gray-900 text-lg text-center">
-              Soluciones a medida
-            </h3>
-            <p className="text-gray-500 text-sm mt-1 text-center">
-              Descubre cómo podemos adaptar nuestras soluciones a tus necesidades.
-            </p>
-          </motion.div>
-
-
-          {/* Tarjetas que solo se verán en pantallas más grandes */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            className="col-span-1 md:col-start-1 md:row-start-1 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg">+1Gbps</h3>
-            <p className="text-gray-500 text-sm mt-1">Velocidad simétrica</p>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            className="col-span-1 md:col-start-2 md:row-start-1 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg">24/7</h3>
-            <p className="text-gray-500 text-sm mt-1">Soporte premium</p>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={4}
-            className="col-span-1 md:col-start-1 md:row-start-2 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg">IoT</h3>
-            <p className="text-gray-500 text-sm mt-1">Soluciones integradas</p>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={6}
-            className="col-span-1 md:col-start-3 md:row-start-2 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg">Tier III</h3>
-            <p className="text-gray-500 text-sm mt-1">Data Center</p>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={7}
-            className="col-span-1 md:col-start-2 md:row-start-3 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg text-center">
-              ¿Necesitas una solución personalizada?
-            </h3>
-            <p className="text-gray-500 text-sm mt-1 text-center">
-              Nuestros expertos pueden diseñar una red a tu medida.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            custom={8}
-            className="col-span-1 md:col-start-3 md:row-start-3 hidden md:flex bg-white rounded-xl shadow-md p-4 flex-col justify-center items-center border border-gray-200"
-          >
-            <h3 className="font-bold text-gray-900 text-lg text-center">
-              Conectividad empresarial
-            </h3>
-            <p className="text-gray-500 text-sm mt-1 text-center">
-              Soluciones robustas para tu negocio.
-            </p>
           </motion.div>
         </div>
       </div>

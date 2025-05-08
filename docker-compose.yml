@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  web-megatnet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Web-GABANANET
+    ports:
+      - "8382:80" # Mapeo de puertos
+    networks:
+      - webnet
+    restart: always
+networks:
+  webnet:
+    driver: bridge
