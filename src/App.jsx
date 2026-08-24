@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Nosotros from "./components/Nosotros";
 import Planes from "./components/Planes";
 import ParametrosCalidad from "./components/ParametrosCalidad";
+import Saturacion from "./components/Saturacion";
 
 // Componente para ir arriba al cambiar de ruta
 const ScrollToTop = () => {
@@ -92,6 +93,19 @@ function App() {
                 transition={{ duration: 0.5 }}
               >
                 <ParametrosCalidad />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/saturacion"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Saturacion />
               </motion.div>
             }
           />

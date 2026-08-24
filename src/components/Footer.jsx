@@ -39,7 +39,7 @@ const Footer = () => {
             <li><a href="https://www.arcotel.gob.ec/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-600 transition-colors flex items-center font-medium"><span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>ARCOTEL</a></li>
             <li><a href="https://www.telecomunicaciones.gob.ec/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-600 transition-colors flex items-center font-medium"><span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>Ministerio TIC</a></li>
             <li><a href="/parametros-calidad" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors flex items-center"><span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>Parámetros de calidad</a></li>
-            <li><a href="#" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors flex items-center"><span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>Tarifario y promociones</a></li>
+            <li><a href="/saturacion" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors flex items-center"><span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>Saturación</a></li>
           </ul>
         </div>
 
