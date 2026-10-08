@@ -1,15 +1,26 @@
-version: "3.8"
 services:
   web-gabananet:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: Web-GABANANET
+    container_name: WEB_CLIENTE__GABANANET
+    build: .
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
     ports:
-      - "8382:80" # Mapeo de puertos
+      - "8383:80"
+    restart: unless-stopped
     networks:
-      - webnet
-    restart: always
+      - gabananet_network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
 networks:
-  webnet:
+  gabananet_network:
     driver: bridge
