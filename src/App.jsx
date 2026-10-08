@@ -12,6 +12,7 @@ import Nosotros from "./components/Nosotros";
 import Planes from "./components/Planes";
 import ParametrosCalidad from "./components/ParametrosCalidad";
 import Saturacion from "./components/Saturacion";
+import CookieConsent from "./components/CookieConsent";
 
 // Componente para ir arriba al cambiar de ruta
 const ScrollToTop = () => {
@@ -111,6 +112,7 @@ function App() {
           />
         </Routes>
         <Footer />
+        <CookieConsent />
       </div>
     </Router>
   );
